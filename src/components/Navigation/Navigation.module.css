@@ -1,0 +1,15 @@
+.nav {
+    grid-area: n;
+    background-color: wheat;
+  }
+
+.nav__item:active, 
+.nav__item:hover, 
+.nav__item {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__item.active {
+    color: rosybrown;
+}
