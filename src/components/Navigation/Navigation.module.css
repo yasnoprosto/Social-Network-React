@@ -1,15 +1,16 @@
 .nav {
     grid-area: n;
     background-color: wheat;
+    padding: 20px;
   }
 
 .nav__item:active, 
 .nav__item:hover, 
 .nav__item {
   text-decoration: none;
-  color: black;
+  color: #132977;
 }
 
-.nav__item.active {
-    color: rosybrown;
+.nav__item.activeLink {
+  color: #1E74FD;
 }
