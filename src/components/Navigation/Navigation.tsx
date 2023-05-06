@@ -1,13 +1,44 @@
-import s from "./Navigation.module.css"
+import { NavLink } from "react-router-dom";
+import s from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
     <nav className={s.nav}>
-      <div className={s.nav__container}><a className={`${s.nav__item} ${s.active}`} href="#">Profiles</a></div>
-      <div className={s.nav__container}><a className={s.nav__item} href="#">Messages</a></div>
-      <div className={s.nav__container}><a className={s.nav__item} href="#">News</a></div>
-      <div className={s.nav__container}><a className={s.nav__item} href="#">Music</a></div>
-      <div className={s.nav__container}><a className={s.nav__item} href="#">Settings</a></div>
+        <NavLink
+          className={s.nav__item}
+          activeClassName={s.activeLink}
+          to="/profile"
+        >
+          Profile
+        </NavLink>
+      <div className={s.nav__container}>
+        <NavLink
+          className={s.nav__item}
+          activeClassName={s.activeLink}
+          to="/dialogs"
+        >
+          Messages
+        </NavLink>
+      </div>
+      <div className={s.nav__container}>
+        <NavLink className={s.nav__item} activeClassName={s.activeLink} to="/news">
+          News
+        </NavLink>
+      </div>
+      <div className={s.nav__container}>
+        <NavLink className={s.nav__item} activeClassName={s.activeLink} to="/music">
+          Music
+        </NavLink>
+      </div>
+      <div className={s.nav__container}>
+        <NavLink
+          className={s.nav__item}
+          activeClassName={s.activeLink}
+          to="/settings"
+        >
+          Settings
+        </NavLink>
+      </div>
     </nav>
   );
 };

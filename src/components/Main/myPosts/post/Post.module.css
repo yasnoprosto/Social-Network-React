@@ -1,0 +1,10 @@
+.main__post {
+    color: green;
+    padding: 10px;
+  }
+  
+  .main__user_avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
