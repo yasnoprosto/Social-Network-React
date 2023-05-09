@@ -5,8 +5,10 @@
 }
 
 .dialogs__item, .dialogs__item:active, .dialogs__item:hover {
-  padding: 20px;
+  display: flex;
+  align-items: center;
   color: #132977;
+  padding: 5px 20px;
   text-decoration: none;
 }
 
@@ -35,4 +37,14 @@
 .message__container {
   display: flex;
   align-items: center;
+}
+
+.dialogs__item_img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.dialogs__item_text {
+  padding: 10px;
 }

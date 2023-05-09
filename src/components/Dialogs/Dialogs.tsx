@@ -10,8 +10,8 @@ import Message from "./Message/Message";
 // ~~~~~~~~~~~~~~~~~~~ Component~~~~~~~~~~~~~~~~~~~~ //
 
 const Dialogs = (props: any) => {
-  const dialogsData = props.dialogsData.friendsList.map((f: { path: string; name: string; }) => (
-    <Dialog path={f.path} userName={f.name} />
+  const dialogsData = props.dialogsData.friendsList.map((f: { path: string; name: string; avatarURL: string;}) => (
+    <Dialog path={f.path} userName={f.name} avatarURL={f.avatarURL} />
   ));
   
   const messagesData = props.dialogsData.messagesList.map((m: { messageText: string; }) => {

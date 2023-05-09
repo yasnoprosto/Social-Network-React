@@ -1,9 +1,9 @@
-import s from "./Main.module.css"
+import s from "./Profile.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPosts from "./myPosts/MyPosts";
 
 
-const Main = (props: any) => {
+const Profile = (props: any) => {
   return (
     <div>
       <ProfileInfo />
@@ -13,4 +13,4 @@ const Main = (props: any) => {
 };
 
 
-export default Main;
+export default Profile;
