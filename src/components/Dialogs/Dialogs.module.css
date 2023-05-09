@@ -25,3 +25,14 @@
 .dialogs__message {
   padding: 20px;
 }
+
+.message__status__circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.message__container {
+  display: flex;
+  align-items: center;
+}

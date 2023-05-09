@@ -2,11 +2,12 @@ import s from "./Main.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPosts from "./myPosts/MyPosts";
 
-const Main = () => {
+
+const Main = (props: any) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts postsList={props.profileData.postsList}/>
     </div>
   );
 };
