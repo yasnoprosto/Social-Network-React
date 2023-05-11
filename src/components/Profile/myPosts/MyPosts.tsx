@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./post/Post";
 
@@ -10,16 +11,28 @@ const MyPosts = (props: any) => {
     }
   );
 
+    const profileTextArea = React.createRef<HTMLTextAreaElement>();
+
+    const addPost = () => {
+      debugger;
+      let text = profileTextArea.current?.value
+      alert(text);
+    }
+  
+    const removePost = () => {
+      alert("Post removed")
+    }
+
   return (
-    <div className={s.main__myPosts}>
+    <div className={s.profile__myPosts}>
       <h3>My Posts</h3>
-      <div className={s.main__newPost}>
+      <div className={s.profile__newPost}>
         <div>
-          <textarea>new post</textarea>
+          <textarea ref={profileTextArea}></textarea>
         </div>
         <div>
-          <button>Add Post</button>
-          <button>Remove</button>
+          <button onClick={addPost}>Add Post</button>
+          <button onClick={removePost}>Remove</button>
         </div>
       </div>
       <div className={s.main__posts}>{postsArray}</div>
