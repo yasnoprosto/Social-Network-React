@@ -1,13 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import data from './redux/state';
+import { rerenderTree } from "./render";
+import state, { addPostData, updatePostText } from "./redux/state"
 
-  // ~~~~~~~~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~~~~~~~ //
-
-
-ReactDOM.render(
-    <App data={data}/>,
-  document.getElementById('root')
-);
+rerenderTree(state, addPostData, updatePostText);
