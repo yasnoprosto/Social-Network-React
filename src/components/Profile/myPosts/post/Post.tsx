@@ -7,7 +7,6 @@ type PostPropsType = {
 
 
 const Post = (props: PostPropsType) => {
-  console.log(props);
   
   return (
     <div className={s.main__post}>

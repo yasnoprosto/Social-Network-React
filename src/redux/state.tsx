@@ -1,4 +1,6 @@
-import { rerenderTree } from "../render";
+let rerenderTree = (data) => {
+  console.log("data were changed");
+};
 
 const data = {
   dialogsData: {
@@ -82,6 +84,7 @@ const data = {
         messageText: "Хахао!",
       },
     ],
+    newMessageText: "2",
   },
   profileData: {
     postsList: [
@@ -162,23 +165,49 @@ const data = {
   },
 };
 
-export const updateInput = () => {
-  
+declare global {
+  interface Window {
+    data: any;
+  }
 }
 
-export const addPostData = (postMessage) => {
+window.data = data;
+
+export const addPostData = () => {
   const newPost = {
     id: 6,
-    message: postMessage,
+    message: data.profileData.newPostText,
     likesCount: 0,
   };
   data.profileData.postsList.push(newPost);
-  rerenderTree(data,addPostData, updatePostText);
+  data.profileData.newPostText = "";
+  rerenderTree(data);
+};
+
+export const addDialogsData = () => {
+  const newMessage = {
+    messageId: 6,
+    messageText: data.dialogsData.newMessageText,
+  };
+  data.dialogsData.messagesList.push(newMessage);
+  data.dialogsData.newMessageText = "";
+  rerenderTree(data);
 };
 
 export const updatePostText = (newText) => {
   data.profileData.newPostText = newText;
-  rerenderTree(data, addPostData, updatePostText)
-}
+  console.log(newText);
+  rerenderTree(data);
+};
+
+export const updateMessageText = (newText) => {
+  data.dialogsData.newMessageText = newText;
+  console.log(newText);
+  rerenderTree(data);
+};
+
+export const subscribe = (observer) => {
+  rerenderTree = observer;
+};
 
 export default data;
