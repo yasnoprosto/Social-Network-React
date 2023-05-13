@@ -4,7 +4,7 @@ import Post from "./post/Post";
 // ~~~~~~~~~~~~~~~~~~~ MyPosts Component ~~~~~~~~~~~~~~~~~~~~ //
 
 const MyPosts = (props: any) => {
-  // debugger
+  debugger
   const postsArray = props.profileData.postsList.map(
     (p: { message: string; likesCount: number }) => {
       return <Post message={p.message} likesCount={p.likesCount} />;
@@ -14,13 +14,8 @@ const MyPosts = (props: any) => {
     const profileTextArea = React.createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-      let text = profileTextArea.current?.value;
-      props.addPostData(text);
-      profileTextArea.current!.value = "";
-    }
-  
-    const removePost = () => {
-      alert("Post removed")
+      // debugger
+      props.addPostData();
     }
 
     const onPostChange = () => {
@@ -37,7 +32,7 @@ const MyPosts = (props: any) => {
         </div>
         <div>
           <button onClick={addPost}>Add Post</button>
-          <button onClick={removePost}>Remove</button>
+          <button>Remove</button>
         </div>
       </div>
       <div className={s.main__posts}>{postsArray}</div>
