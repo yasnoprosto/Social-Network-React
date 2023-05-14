@@ -4,7 +4,6 @@ import Post from "./post/Post";
 // ~~~~~~~~~~~~~~~~~~~ MyPosts Component ~~~~~~~~~~~~~~~~~~~~ //
 
 const MyPosts = (props: any) => {
-  debugger
   const postsArray = props.profileData.postsList.map(
     (p: { message: string; likesCount: number }) => {
       return <Post message={p.message} likesCount={p.likesCount} />;
