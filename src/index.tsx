@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import data, { addDialogsData, addPostData, subscribe, updateMessageText, updatePostText } from "./redux/state";
+import store from "./redux/state";
 
 // ~~~~~~~~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~~~~~~~ //
 
@@ -10,11 +10,11 @@ import data, { addDialogsData, addPostData, subscribe, updateMessageText, update
   ReactDOM.render(
     <BrowserRouter>
       <App
-        data={data}
-        addPostData={addPostData}
-        updatePostText={updatePostText}
-        addDialogsData={addDialogsData}
-        updateMessageText={updateMessageText}
+        data={store.getData()}
+        addPostData={store.addPostData}
+        updatePostText={store.updatePostText}
+        addDialogsData={store.addDialogsData}
+        updateMessageText={store.updateMessageText}
       />
       ,
     </BrowserRouter>,
@@ -22,6 +22,6 @@ import data, { addDialogsData, addPostData, subscribe, updateMessageText, update
   );
 };
 
-rerenderTree(data);
+rerenderTree(store.getData());
 
-subscribe(rerenderTree);
+store.subscribe(rerenderTree);
