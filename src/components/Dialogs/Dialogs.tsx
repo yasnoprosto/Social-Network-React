@@ -7,7 +7,7 @@ import Message from "./Message/Message";
 // ~~~~~~~~~~~~~~~~~~~ Component~~~~~~~~~~~~~~~~~~~~ //
 
 const Dialogs = (props: any) => {
-  debugger
+  // debugger
   const dialogsData = props.dialogsData.friendsList.map(
     (f: { path: string; name: string; avatarURL: string }) => (
       <Dialog path={f.path} userName={f.name} avatarURL={f.avatarURL} />
@@ -17,13 +17,14 @@ const Dialogs = (props: any) => {
   let messagesTextArea = React.createRef<HTMLTextAreaElement>();
 
   const addMessage = () => {
-    // debugger
-    props.addDialogsData();
+    let action = { type: "ADD-MESSAGE" };
+    props.dispatch(action);
   };
 
   const onMessageTextChange = () => {
     let text = messagesTextArea.current?.value;
-    props.updateMessageText(text);
+    const action = { type: "UPDATE-MESSAGE", newText: text };
+    props.dispatch(action);
   };
 
   const messagesData = props.dialogsData.messagesList.map(

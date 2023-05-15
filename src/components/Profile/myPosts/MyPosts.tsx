@@ -13,13 +13,14 @@ const MyPosts = (props: any) => {
     const profileTextArea = React.createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-      // debugger
-      props.addPostData();
+      const action = { type: 'ADD-POST' };
+      props.dispatch(action);
     }
 
     const onPostChange = () => {
       let text = profileTextArea.current?.value;
-      props.updatePostText(text);
+      let action = { type: 'UPDATE-POST-TEXT', newText: text };
+      props.dispatch(action);
     }
 
   return (

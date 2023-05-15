@@ -1,4 +1,3 @@
-
 export const store = {
   _data: {
     dialogsData: {
@@ -162,51 +161,50 @@ export const store = {
       ],
     },
   },
-  getData() {
-    debugger
-    return this._data;
-  },
   _callSubscriber(data) {
     console.log("data were changed");
   },
-  addPostData() {
-    debugger
-    const newPost = {
-      id: 6,
-      message: this._data.profileData.newPostText,
-      likesCount: 0,
-    };
-    this._data.profileData.postsList.push(newPost);
-    this._data.profileData.newPostText = "";
-    this._callSubscriber(this._data);
+
+  getData() {
+    return this._data;
   },
-  updatePostText(newText) {
-    this._data.profileData.newPostText = newText;
-    console.log(newText);
-    this._callSubscriber(this._data);
-  },
-  addDialogsData() {
-    const newMessage = {
-      messageId: 6,
-      messageText: this._data.dialogsData.newMessageText,
-    };
-    this._data.dialogsData.messagesList.push(newMessage);
-    this._data.dialogsData.newMessageText = "";
-    this._callSubscriber(this._data);
-  },
-  updateMessageText(newText) {
-    this._data.dialogsData.newMessageText = newText;
-    console.log(newText);
-    this._callSubscriber(this._data);
-  },
-  subscribe(observer){
+  subscribe(observer) {
     this._callSubscriber = observer;
+  },
+  
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      const newPost = {
+        id: 6,
+        message: this._data.profileData.newPostText,
+        likesCount: 0,
+      };
+      this._data.profileData.postsList.push(newPost);
+      this._data.profileData.newPostText = "";
+      this._callSubscriber(this._data);
+    } else if (action.type === "UPDATE-POST-TEXT") {
+      this._data.profileData.newPostText = action.newText;
+      console.log(action.newText);
+      this._callSubscriber(this._data);
+    } else if (action.type === "ADD-MESSAGE") {
+      const newMessage = {
+        messageId: 6,
+        messageText: this._data.dialogsData.newMessageText,
+      };
+      this._data.dialogsData.messagesList.push(newMessage);
+      this._data.dialogsData.newMessageText = "";
+      this._callSubscriber(this._data);
+    } else if (action.type === "UPDATE-MESSAGE") {
+      this._data.dialogsData.newMessageText = action.newText;
+      console.log(action.newText);
+      this._callSubscriber(this._data);
+    }
   },
 };
 
 export default store;
 declare global {
   interface Window {
-    store: any
+    store: any;
   }
 }

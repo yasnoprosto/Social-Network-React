@@ -10,11 +10,8 @@ import store from "./redux/state";
   ReactDOM.render(
     <BrowserRouter>
       <App
-        data={store.getData()}
-        addPostData={store.addPostData}
-        updatePostText={store.updatePostText}
-        addDialogsData={store.addDialogsData}
-        updateMessageText={store.updateMessageText}
+        data={data}
+        dispatch={store.dispatch.bind(store)}
       />
       ,
     </BrowserRouter>,
