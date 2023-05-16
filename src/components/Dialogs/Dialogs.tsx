@@ -3,6 +3,8 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import { addMessageActionCreator, onMessageTextChangeActionCreator } from "../../redux/state";
+
 
 // ~~~~~~~~~~~~~~~~~~~ Component~~~~~~~~~~~~~~~~~~~~ //
 
@@ -17,13 +19,13 @@ const Dialogs = (props: any) => {
   let messagesTextArea = React.createRef<HTMLTextAreaElement>();
 
   const addMessage = () => {
-    let action = { type: "ADD-MESSAGE" };
+    let action = addMessageActionCreator();
     props.dispatch(action);
   };
 
   const onMessageTextChange = () => {
     let text = messagesTextArea.current?.value;
-    const action = { type: "UPDATE-MESSAGE", newText: text };
+    const action = onMessageTextChangeActionCreator(text)
     props.dispatch(action);
   };
 
@@ -41,6 +43,8 @@ const Dialogs = (props: any) => {
           onChange={onMessageTextChange}
           ref={messagesTextArea}
           className={s.dialogs__textarea}
+          value={props.dialogsData.newMessageText}
+          placeholder="Enter your message"
         ></textarea>
         <button onClick={addMessage}>Send</button>
       </div>
