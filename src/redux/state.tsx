@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_MESSAGE = "UPDATE-MESSAGE";
+
 export const store = {
   _data: {
     dialogsData: {
@@ -81,7 +86,7 @@ export const store = {
           messageText: "Хахао!",
         },
       ],
-      newMessageText: "2",
+      newMessageText: "",
     },
     profileData: {
       postsList: [
@@ -111,7 +116,7 @@ export const store = {
           likesCount: 800,
         },
       ],
-      newPostText: "1",
+      newPostText: "",
     },
     navigationData: {
       friendsListNav: [
@@ -171,9 +176,9 @@ export const store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  
+
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       const newPost = {
         id: 6,
         message: this._data.profileData.newPostText,
@@ -182,25 +187,39 @@ export const store = {
       this._data.profileData.postsList.push(newPost);
       this._data.profileData.newPostText = "";
       this._callSubscriber(this._data);
-    } else if (action.type === "UPDATE-POST-TEXT") {
+    } else if (action.type === UPDATE_POST_TEXT) {
       this._data.profileData.newPostText = action.newText;
       console.log(action.newText);
       this._callSubscriber(this._data);
-    } else if (action.type === "ADD-MESSAGE") {
+    } else if (action.type === ADD_MESSAGE) {
       const newMessage = {
-        messageId: 6,
+        messageId: 6, 
         messageText: this._data.dialogsData.newMessageText,
       };
       this._data.dialogsData.messagesList.push(newMessage);
       this._data.dialogsData.newMessageText = "";
       this._callSubscriber(this._data);
-    } else if (action.type === "UPDATE-MESSAGE") {
+    } else if (action.type === UPDATE_MESSAGE) {
       this._data.dialogsData.newMessageText = action.newText;
       console.log(action.newText);
       this._callSubscriber(this._data);
     }
   },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const onPostChangeActionCreator = (text: any) => ({
+  type: UPDATE_POST_TEXT,
+  newText: text,
+});
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+
+export const onMessageTextChangeActionCreator = (text: any) => ({
+  type: UPDATE_MESSAGE,
+  newText: text,
+});
 
 export default store;
 declare global {
