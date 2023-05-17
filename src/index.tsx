@@ -10,8 +10,9 @@ import store from "./redux/state";
   ReactDOM.render(
     <BrowserRouter>
       <App
+        store={store}
         data={data}
-        dispatch={store.dispatch.bind(store)}
+        dispatch={store.dispatch.bind(store)} 
       />
       ,
     </BrowserRouter>,

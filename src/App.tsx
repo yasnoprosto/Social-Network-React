@@ -29,7 +29,7 @@ const App = (props: any) => {
             path="/dialogs"
             render={() => (
               <Dialogs
-                dialogsData={props.data.dialogsData}
+                store={props.store}
                 dispatch={props.dispatch}
               />
             )}

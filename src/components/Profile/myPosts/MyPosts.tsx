@@ -13,16 +13,13 @@ const MyPosts = (props: any) => {
       return <Post message={p.message} likesCount={p.likesCount} />;
     }
   );
-
-    const profileTextArea = React.createRef<HTMLTextAreaElement>();
-
     const addPost = () => {
       const action = addPostActionCreator();
       props.dispatch(action);
     }
 
-    const onPostChange = () => {
-      let text = profileTextArea.current?.value;
+    const onPostChange = (e) => {
+      let text = e.target?.value;
       const action = onPostChangeActionCreator(text);
       props.dispatch(action);
     }
@@ -32,7 +29,7 @@ const MyPosts = (props: any) => {
       <h3>My Posts</h3>
       <div className={s.profile__newPost}>
         <div>
-          <textarea ref={profileTextArea} onChange={onPostChange} value={props.profileData.newPostText}/>
+          <textarea placeholder={"Write smth interesting"} onChange={onPostChange} value={props.profileData.newPostText}/>
         </div>
         <div>
           <button onClick={addPost}>Add Post</button>
