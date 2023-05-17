@@ -9,42 +9,43 @@ import { addMessageActionCreator, onMessageTextChangeActionCreator } from "../..
 // ~~~~~~~~~~~~~~~~~~~ Component~~~~~~~~~~~~~~~~~~~~ //
 
 const Dialogs = (props: any) => {
-  // debugger
-  const dialogsData = props.dialogsData.friendsList.map(
+  debugger
+
+  const dialogsDataFromStore = props.store.getData().dialogsData;
+
+
+  const dialogsElements = dialogsDataFromStore.friendsList.map(
     (f: { path: string; name: string; avatarURL: string }) => (
       <Dialog path={f.path} userName={f.name} avatarURL={f.avatarURL} />
     )
   );
 
-  let messagesTextArea = React.createRef<HTMLTextAreaElement>();
-
-  const addMessage = () => {
-    let action = addMessageActionCreator();
-    props.dispatch(action);
-  };
-
-  const onMessageTextChange = () => {
-    let text = messagesTextArea.current?.value;
-    const action = onMessageTextChangeActionCreator(text)
-    props.dispatch(action);
-  };
-
-  const messagesData = props.dialogsData.messagesList.map(
+  const messagesElements = dialogsDataFromStore.messagesList.map(
     (m: { messageText: string }) => {
       return <Message messageContent={m.messageText} />;
     }
   );
+
+  const addMessage = () => {
+    props.store.dispatch(addMessageActionCreator());
+  };
+
+  const onMessageTextChange = (e) => {
+    let textMessage = e.target?.value;
+    props.store.dispatch(onMessageTextChangeActionCreator(textMessage));
+  };
+
+  
   return (
     <div className={s.dialogs__container}>
-      <div className={s.dialogs__users}>{dialogsData}</div>
+      <div className={s.dialogs__users}>{dialogsElements}</div>
       <div className={s.dialogs__messages__container}>
-        <div className={s.dialogs__messages}>{messagesData}</div>
+        <div className={s.dialogs__messages}>{messagesElements}</div>
         <textarea
           onChange={onMessageTextChange}
-          ref={messagesTextArea}
           className={s.dialogs__textarea}
-          value={props.dialogsData.newMessageText}
-          placeholder="Enter your message"
+          value={dialogsDataFromStore.newMessageText}
+          placeholder="Enter some text"
         ></textarea>
         <button onClick={addMessage}>Send</button>
       </div>

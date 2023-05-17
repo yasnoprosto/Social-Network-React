@@ -3,7 +3,7 @@ const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_MESSAGE = "UPDATE-MESSAGE";
 
-export const store = {
+export const store = { 
   _data: {
     dialogsData: {
       friendsList: [
