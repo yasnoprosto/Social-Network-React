@@ -1,17 +1,18 @@
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import store from "./redux/store";
+import { BrowserRouter } from "react-router-dom"; 
+import store from "./redux/reduxStore";
 
 // ~~~~~~~~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~~~~~~~ //
 
- const rerenderTree = (data) => {
+ const rerenderTree = (state) => {
+  debugger
   ReactDOM.render(
     <BrowserRouter>
       <App
         store={store}
-        data={data}
+        state={state}
         dispatch={store.dispatch.bind(store)} 
       />
       ,
@@ -20,6 +21,9 @@ import store from "./redux/store";
   );
 };
 
-rerenderTree(store.getData());
+rerenderTree(store.getState());
 
-store.subscribe(rerenderTree);
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderTree(state); 
+});

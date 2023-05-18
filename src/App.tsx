@@ -7,19 +7,19 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 
 const App = (props: any) => {
-  // debugger
+  debugger;
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Header />
-        <Navigation navigationData={props.data.navigationData} />
+        <Navigation navigationData={props.state.navigationData} />
         <div className="app-wrapper-content">
           <Route
             exact
             path="/profile"
             render={() => (
               <Profile
-                profileData={props.data.profileData}
+                profileData={props.state.profileData}
                 dispatch={props.dispatch}
               />
             )}
@@ -28,10 +28,7 @@ const App = (props: any) => {
             exact
             path="/dialogs"
             render={() => (
-              <Dialogs
-                store={props.store}
-                dispatch={props.dispatch}
-              />
+              <Dialogs store={props.store} dispatch={props.dispatch} />
             )}
           />
           {/* <Route exact path="/news" component={Dialogs} />

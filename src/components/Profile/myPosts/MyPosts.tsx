@@ -2,12 +2,14 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./post/Post"; 
 import { addPostActionCreator, onPostChangeActionCreator } from "../../../redux/profileReducer";
+import { Db } from "mongodb";
 
 
  
 // ~~~~~~~~~~~~~~~~~~~ MyPosts Component ~~~~~~~~~~~~~~~~~~~~ //
 
 const MyPosts = (props: any) => {
+  debugger
   const postsArray = props.profileData.postsList.map(
     (p: { message: string; likesCount: number }) => {
       return <Post message={p.message} likesCount={p.likesCount} />;
@@ -19,6 +21,7 @@ const MyPosts = (props: any) => {
     }
 
     const onPostChange = (e) => {
+      debugger
       let text = e.target?.value;
       const action = onPostChangeActionCreator(text);
       props.dispatch(action);

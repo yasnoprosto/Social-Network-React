@@ -10,7 +10,7 @@ import { addMessageActionCreator, onMessageTextChangeActionCreator } from "../..
 const Dialogs = (props: any) => {
   debugger
 
-  const dialogsDataFromStore = props.store.getData().dialogsData;
+  const dialogsDataFromStore = props.store.getState().dialogsData;
 
 
   const dialogsElements = dialogsDataFromStore.friendsList.map(
