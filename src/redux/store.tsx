@@ -8,7 +8,7 @@ const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_MESSAGE = "UPDATE-MESSAGE";
 
 export const store = {
-  _data: {
+  _state: {
     dialogsData: {
       friendsList: [
         {
@@ -170,22 +170,23 @@ export const store = {
       ],
     },
   },
-  _callSubscriber(data) {
-    console.log("data were changed");
+  _callSubscriber(state) {
+    console.log("state were changed");
   },
 
-  getData() {
-    return this._data;
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
 
   dispatch(action) {
-    profileReducer(this._data.profileData, action);
-    dialogsReducer(this._data.dialogsData, action);
-    navigationReducer(this._data.navigationData, action);
-    this._callSubscriber(this._data);
+    debugger;
+    profileReducer(this._state.profileData, action);
+    dialogsReducer(this._state.dialogsData, action);
+    navigationReducer(this._state.navigationData, action);
+    this._callSubscriber(this._state);
   },
 };
 

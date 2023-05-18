@@ -4,6 +4,7 @@ import MyPosts from "./myPosts/MyPosts";
 
 
 const Profile = (props: any) => {
+  debugger
   return (
     <div>
       <ProfileInfo />
