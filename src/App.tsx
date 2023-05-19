@@ -5,9 +5,10 @@ import Profile from "./components/Profile/Profile";
 import Navigation from "./components/Navigation/Navigation";
 import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props: any) => {
-  debugger;
+  // debugger;
   return (
     <BrowserRouter>
       <div className="wrapper">
@@ -19,8 +20,7 @@ const App = (props: any) => {
             path="/profile"
             render={() => (
               <Profile
-                profileData={props.state.profileData}
-                dispatch={props.dispatch}
+                store={props.store}
               />
             )}
           />
@@ -28,7 +28,7 @@ const App = (props: any) => {
             exact
             path="/dialogs"
             render={() => (
-              <Dialogs store={props.store} dispatch={props.dispatch} />
+              <DialogsContainer store={props.store} />
             )}
           />
           {/* <Route exact path="/news" component={Dialogs} />

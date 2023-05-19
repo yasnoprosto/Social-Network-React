@@ -3,7 +3,7 @@ import s from "./Navigation.module.css";
 import Friends from "./Friends/Friends";
 
 const Navigation = (props: any) => {
-  debugger
+  // debugger
 
   // ~~~~~~~~~~~~~~~~~~~  NAVIGATION MENU ITEM MAPPING JSX  ~~~~~~~~~~~~~~~~~~~~ //
 
