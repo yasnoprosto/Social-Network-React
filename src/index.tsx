@@ -7,7 +7,7 @@ import store from "./redux/reduxStore";
 // ~~~~~~~~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~~~~~~~ //
 
  const rerenderTree = (state) => {
-  debugger
+  // debugger
   ReactDOM.render(
     <BrowserRouter>
       <App

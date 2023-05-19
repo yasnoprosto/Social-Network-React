@@ -8,32 +8,28 @@ import { addMessageActionCreator, onMessageTextChangeActionCreator } from "../..
 // ~~~~~~~~~~~~~~~~~~~ Component~~~~~~~~~~~~~~~~~~~~ //
 
 const Dialogs = (props: any) => {
-  debugger
+  // debugger
 
-  const dialogsDataFromStore = props.store.getState().dialogsData;
-
-
-  const dialogsElements = dialogsDataFromStore.friendsList.map(
+  const dialogsElements = props.friendsList.map(
     (f: { path: string; name: string; avatarURL: string }) => (
       <Dialog path={f.path} userName={f.name} avatarURL={f.avatarURL} />
     )
   );
 
-  const messagesElements = dialogsDataFromStore.messagesList.map(
+  const messagesElements = props.messagesList.map(
     (m: { messageText: string }) => {
       return <Message messageContent={m.messageText} />;
     }
   );
 
   const addMessage = () => {
-    props.store.dispatch(addMessageActionCreator());
+    props.addMessage();
   };
 
   const onMessageTextChange = (e) => {
-    let textMessage = e.target?.value;
-    props.store.dispatch(onMessageTextChangeActionCreator(textMessage));
+    let text = e.target?.value;
+    props.onMessageTextChange(text);
   };
-
   
   return (
     <div className={s.dialogs__container}>
@@ -43,7 +39,7 @@ const Dialogs = (props: any) => {
         <textarea
           onChange={onMessageTextChange}
           className={s.dialogs__textarea}
-          value={dialogsDataFromStore.newMessageText}
+          value={props.newMessageText}
           placeholder="Enter some text"
         ></textarea>
         <button onClick={addMessage}>Send</button>
