@@ -22,6 +22,7 @@ const App = (props: any) => {
               return (
                   <Profile
                       store={props.store}
+                      stors={props.store}
                   />
               );
             }}
