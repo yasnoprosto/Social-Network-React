@@ -18,11 +18,13 @@ const App = (props: any) => {
           <Route
             exact
             path="/profile"
-            render={() => (
-              <Profile
-                store={props.store}
-              />
-            )}
+            render={() => {
+              return (
+                  <Profile
+                      store={props.store}
+                  />
+              );
+            }}
           />
           <Route
             exact
